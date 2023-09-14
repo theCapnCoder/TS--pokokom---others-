@@ -200,3 +200,17 @@ type Tuple = [string, number, boolean]
 // type Tuple = [string, number, boolean, ...string[]]
 
 const array: Tuple = ['1', 2, true]
+
+//// Immutable, readonly
+
+interface User1 {
+  username: string
+}
+
+const ojb: User1 = {
+  username: '1'
+} as const;
+
+// function userFn(user: Readonly<User1>) {
+//   user.username = '2'
+// }
