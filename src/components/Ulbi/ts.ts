@@ -154,3 +154,20 @@ function fn4(role: UserRoles3) {
 }
 
 // fn4('') // clue
+
+//// ReturnType, Parameters
+
+interface User {
+  id: string
+  data: string
+}
+
+function fn5(arg1: string, arg2: boolean): User {
+  return {
+    id: '1',
+    data: 'value'
+  }
+}
+
+type FnResult = ReturnType<typeof fn5>
+type FnArgs = Parameters<typeof fn5>
