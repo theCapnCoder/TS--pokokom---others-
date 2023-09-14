@@ -103,9 +103,54 @@ function fn(car: TCar) {
 }
 
 
-// // Enums
+// Enum
 
-// enum UserRole {
-//   USER = 'user',
-//   ADMIN = 'admin',
+enum UserRole {
+  USER = 'user',
+  ADMIN = 'admin',
+}
+
+enum UserRoles {
+  USER = 'user',
+  ADMIN = 'admin',
+}
+
+console.log(typeof UserRole) // object
+
+function fn1(role: UserRole) {
+
+}
+
+// fn1(UserRoles.ADMIN) //different
+
+const enum UserRoles2 {
+  USER = 'user',
+  ADMIN = 'admin',
+}
+
+function fn2(role: UserRoles2) {
+}
+
+// fn2(UserRoles.ADMIN)
+// console.log(typeof UserRoles2) // Error
+
+// for (const key in UserRoles2) {
+//   console.log(key)
 // }
+
+// Error,const unum is not object, but if we use enum it will be
+
+const UserRoles3 = {
+  USER: 'user',
+  ADMIN: 'admin',
+} as const // - read only
+
+// type UserRoles3 = typeof UserRoles3[keyof typeof UserRoles3]
+
+type ValueOf<T> = T[keyof T]
+type UserRoles3 = ValueOf<typeof UserRoles3>
+
+function fn4(role: UserRoles3) {
+}
+
+// fn4('') // clue
