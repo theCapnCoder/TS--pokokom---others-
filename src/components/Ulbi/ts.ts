@@ -171,3 +171,24 @@ function fn5(arg1: string, arg2: boolean): User {
 
 type FnResult = ReturnType<typeof fn5>
 type FnArgs = Parameters<typeof fn5>
+
+//// Conditional Types
+
+// type Conditional<T> = T extends string ? number : boolean
+
+// const value: Conditional<number> = true
+
+type Data = { value: string }
+type Car2 = { model: string }
+
+type DataOrCar<T> = T extends string ? Data : Car2
+
+function todo<T>(arg: T): DataOrCar<T> {
+  // if(...) return ...
+  // else return...
+
+  throw Error('Function not implemented.')
+}
+
+const value = todo('kje')
+// value.value
