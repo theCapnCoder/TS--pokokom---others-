@@ -214,3 +214,28 @@ const ojb: User1 = {
 // function userFn(user: Readonly<User1>) {
 //   user.username = '2'
 // }
+
+
+//// Utitlty Types
+
+
+// Omit, Pick, Exclude and Extract for union
+
+interface User2 {
+  username: string
+  birthday: {
+    day: number
+    month: number
+    year: number
+  }
+}
+
+type ValueOf1<T> = T[keyof T]
+
+type BirthDay = ValueOf1<Pick<User2, 'birthday'>>
+
+// Partial, only first children
+
+type DeepParital<T> = T extends object ? {
+  [P in keyof T]?: DeepParital<T[P]>
+} : T
