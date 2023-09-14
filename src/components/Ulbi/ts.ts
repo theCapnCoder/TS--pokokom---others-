@@ -192,3 +192,11 @@ function todo<T>(arg: T): DataOrCar<T> {
 
 const value = todo('kje')
 // value.value
+
+//// Tuple
+// Картеж - это массив фиксированной длины с заранее известным типом элементов, которые должны нам вернуться.
+
+type Tuple = [string, number, boolean]
+// type Tuple = [string, number, boolean, ...string[]]
+
+const array: Tuple = ['1', 2, true]
