@@ -3,64 +3,66 @@
 // For example:
 
 interface Todo {
-  title: string
-  description: string
-  completed: boolean
+  title: string;
+  description: string;
+  completed: boolean;
 }
 
-type MyPick<T, K> {
+// answer
+type MyPick<T, K extends keyof T> = {
+  [key in K]: T[key];
+};
 
-}
+type TodoPreview = MyPick<Todo, "title" | "completed">;
 
-type TodoPreview = MyPick<Todo, 'title' | 'completed'>
+const todo1: TodoPreview = {
+  title: "Clean room",
+  completed: false,
+};
 
-const todo: TodoPreview = {
-    title: 'Clean room',
-    completed: false,
-}
+type Thing<T, K extends keyof T> = K;
 
-type Thing<T, K extends keyof T> = K 
-
-const thing = (): Thing<Todo, 'title' | 'completed'> => {
+const thing = (): Thing<Todo, "title" | "completed"> => {
   // return 'name'
   // return {
   //   title: 'Clean room',
   //   description: 'Clean room',
   //   completed: false,
   // }
-  return 'completed'
-}
+  return "completed";
+};
 
 const user = {
-  name: 'John',
+  name: "John",
   age: 30,
-  // city: 'New York',
-  // country: 'USA',
+  city: "New York",
+  country: "USA",
   // isMarried: false,
   // 10: false,
-}
+};
 
+const str = "hello";
+// let str = "hello";
 
-const str = 'hello'
+type Str = typeof str;
 
 // type K = 'name' | 'age'
 
 type User10<T, K extends keyof T> = {
   [key in K]: T[key];
-}; 
+};
 
-type User100 = typeof user; 
+type User100 = typeof user;
 
-const user2: User10<User100, 'name' | 'age'> = {
-  name: 'John',
-  age: 30,
-}
-
+const user2: User10<User100, "name" | "age"> = {
+  name: "John",
+  age: 20,
+};
 
 type Point = { x: number; y: number };
 type P = keyof Point;
 
-const point: {[key in P]: number} = {
+const point: { [key in P]: number } = {
   x: 10,
   y: 10,
-}
+};
