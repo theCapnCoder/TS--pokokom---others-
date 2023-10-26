@@ -239,3 +239,8 @@ type BirthDay = ValueOf1<Pick<User2, 'birthday'>>
 type DeepParital<T> = T extends object ? {
   [P in keyof T]?: DeepParital<T[P]>
 } : T
+
+
+//// React
+// <T> JSX interpreter like not close tag
+// <T extends string>
