@@ -32,7 +32,7 @@ const thing = (): Thing<Todo, "title" | "completed"> => {
   return "completed";
 };
 
-const user = {
+export const user = {
   name: "John",
   age: 30,
   city: "New York",
